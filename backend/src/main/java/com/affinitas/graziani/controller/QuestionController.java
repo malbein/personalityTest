@@ -30,11 +30,9 @@ public class QuestionController {
     protected ObjectMapper objectMapper = new ObjectMapper();
 
     @GetMapping(produces = "application/json")
-    public ResponseEntity<Iterable<Question>> list(){
-        Map<String,String> map = new HashMap<String,String>();
-        map.put("status","works");
-        Iterable<Question> list = questionRepository.findByChild(false);
-        return new ResponseEntity<Iterable<Question>>(list, HttpStatus.OK);
+    public ResponseEntity<List<Question>> list(){
+        List<Question> list = questionRepository.findByChild(false);
+        return new ResponseEntity<List<Question>>(list, HttpStatus.OK);
     }
 
     @GetMapping(path = "/init", produces = "application/json")
@@ -47,5 +45,6 @@ public class QuestionController {
         }
         return new ResponseEntity(HttpStatus.OK);
     }
+
 
 }
