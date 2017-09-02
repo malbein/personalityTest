@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -53,5 +56,17 @@ public class AppConfig {
         lef.setPackagesToScan("com.affinitas.graziani.domain");
         lef.afterPropertiesSet();
         return lef.getObject();
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/question").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/answer").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/category").allowedOrigins("http://localhost:4200");
+            }
+        };
     }
 }

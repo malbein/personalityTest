@@ -23,5 +23,6 @@ hs_err_pid*
 
 # IDE
 .idea
-/backend/target
 
+/backend/target
+.DS_Store
