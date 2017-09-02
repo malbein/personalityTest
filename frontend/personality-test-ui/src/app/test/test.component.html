@@ -1,5 +1,10 @@
-<ul>
-  <li *ngFor="let question of questions">
-    {{ question.question }}
-  </li>
-</ul>
+<div *ngFor="let question of questions" class="well">
+  <div *ngIf="question.question_type.type == 'single_choice'; then singleChoiceBlock"></div>
+  <ng-template #singleChoiceBlock>
+    <single-choice [question]="question"></single-choice>
+  </ng-template>
+  <div *ngIf="question.question_type.type == 'single_choice_conditional'; then conditionalBlock"></div>
+  <ng-template #conditionalBlock>
+    <single-choice-conditional [question]="question"></single-choice-conditional>
+  </ng-template>
+</div>

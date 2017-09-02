@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>{{ question.question }}</h4>
+  </div>
+  <div class="panel-body form-group">
+    <select #t (change)="submitAnswer(t.value)" class="form-control">
+      <option></option>
+      <option *ngFor="let x of question.question_type.options" [value]="x" [selected]="answer.answer == x" >{{x}}</option>
+    </select>
+  </div>
+</div>

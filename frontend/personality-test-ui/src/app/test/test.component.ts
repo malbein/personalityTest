@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService} from "../question/question.service";
-import {QuestionModel} from "../question/question.model";
+import {QuestionModel} from "../question/model/question.model";
 
 @Component({
   selector: 'test-main',

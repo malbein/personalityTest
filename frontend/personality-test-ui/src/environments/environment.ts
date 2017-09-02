@@ -8,6 +8,10 @@ export const environment = {
   endPoints: {
     question:{
       list: 'http://localhost:8080/question'
+    },
+    answer:{
+      post: 'http://localhost:8080/answer'
     }
+
   }
 };
