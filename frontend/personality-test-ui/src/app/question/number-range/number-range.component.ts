@@ -4,16 +4,16 @@ import {AnswerModel} from "../model/answer.model";
 import {AnswerService} from "../answer.service";
 
 @Component({
-  selector: 'single-choice-conditional',
-  styleUrls: ['single-choice-conditional.component.less'],
-  templateUrl: 'single-choice-conditional.component.html',
+  selector: 'number-range',
+  styleUrls: ['number-range.component.less'],
+  templateUrl: 'number-range.component.html',
   providers: [AnswerService]
 })
-export class SingleChoiceConditional implements OnInit{
+export class NumberRange implements OnInit{
 
   answer: AnswerModel;
   @Input() question: QuestionModel;
-  show_conditional: boolean = false;
+  numbers: Array<number> = [];
 
   constructor(private answerService: AnswerService) {
   }
@@ -21,11 +21,6 @@ export class SingleChoiceConditional implements OnInit{
   public submitAnswer(value){
     this.answer.answer = value;
     this.answerService.post(this.answer).subscribe();
-    if(value == this.question.question_type.condition.predicate.exactEquals[1]){
-      this.show_conditional = true;
-    }else{
-      this.show_conditional = false;
-    }
   }
 
   ngOnInit(){
@@ -33,6 +28,13 @@ export class SingleChoiceConditional implements OnInit{
       this.answer = new AnswerModel();
     }
     this.answer.question = this.question.id;
+
+    let from = this.question.question_type.range.from;
+    let to = this.question.question_type.range.to;
+    this.numbers = new Array();
+    for(var i=from;i<=to;i++) {
+      this.numbers.push(i);
+    }
   }
 
 }

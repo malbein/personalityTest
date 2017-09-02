@@ -8,13 +8,15 @@ import { TestComponent } from "./test/test.component";
 import { AlertModule } from 'ngx-bootstrap';
 import {SingleChoice} from "./question/single-choice/single-choice.component";
 import {SingleChoiceConditional} from "./question/single-choice-conditional/single-choice-conditional.component";
+import {NumberRange} from "./question/number-range/number-range.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     SingleChoice,
-    SingleChoiceConditional
+    SingleChoiceConditional,
+    NumberRange
   ],
   imports: [
     BrowserModule,

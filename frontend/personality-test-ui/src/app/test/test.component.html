@@ -7,4 +7,8 @@
   <ng-template #conditionalBlock>
     <single-choice-conditional [question]="question"></single-choice-conditional>
   </ng-template>
+  <div *ngIf="question.question_type.type == 'number_range'; then rangeBlock"></div>
+  <ng-template #rangeBlock>
+    <number-range [question]="question"></number-range>
+  </ng-template>
 </div>
