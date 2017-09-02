@@ -12,10 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * Created by matiasgraziani on 8/31/17.
  */
 @SpringBootApplication
-@EnableJpaRepositories("com.affinitas.graziani.repository")
-@EnableTransactionManagement
-@ComponentScan(basePackages={"com.affinitas.graziani.*"})
-@EntityScan("com.affinitas.graziani.domain")
+@EnableJpaRepositories
 @EnableSwagger2
 public class Application {
 

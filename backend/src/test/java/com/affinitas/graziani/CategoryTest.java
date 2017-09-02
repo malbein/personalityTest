@@ -8,6 +8,8 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,6 +20,15 @@ import static org.junit.Assert.assertEquals;
  * Created by matiasgraziani on 9/1/17.
  */
 public class CategoryTest extends BaseTest {
+
+    @Override
+    public void initTest() {
+        try{
+            initJsonToModel();
+        }catch (Exception e){
+            fail("Fail to initialize data");
+        }
+    }
 
     @Test
     public void testFindAll() throws Exception{
@@ -30,6 +41,11 @@ public class CategoryTest extends BaseTest {
         JavaType type = objectMapper.getTypeFactory().constructCollectionType(List.class, String.class);
         List<String> arrayOfT = objectMapper.readValue(content, type);
 
-        assertEquals(arrayOfT.size(), 4);
+        assertEquals(4, arrayOfT.size());
+        assertTrue("Category hard_fact",arrayOfT.contains("hard_fact"));
+        assertTrue("Category lifestyle",arrayOfT.contains("lifestyle"));
+        assertTrue("Category introversion",arrayOfT.contains("introversion"));
+        assertTrue("Category passion",arrayOfT.contains("passion"));
     }
+
 }

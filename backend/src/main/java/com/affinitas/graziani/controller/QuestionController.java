@@ -27,24 +27,10 @@ public class QuestionController {
     @Autowired
     private QuestionRepository questionRepository;
 
-    protected ObjectMapper objectMapper = new ObjectMapper();
-
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<Question>> list(){
         List<Question> list = questionRepository.findByChild(false);
         return new ResponseEntity<List<Question>>(list, HttpStatus.OK);
     }
-
-    @GetMapping(path = "/init", produces = "application/json")
-    public ResponseEntity<Void> initialize() throws Exception{
-        ClassPathResource cpr = new ClassPathResource("question.json");
-        if(cpr.exists()){
-            JavaType type = objectMapper.getTypeFactory().constructCollectionType(List.class, Question.class);
-            List<Question> questions = objectMapper.readValue(cpr.getInputStream(),type);
-            questionRepository.save(questions);
-        }
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
 
 }

@@ -104,4 +104,19 @@
     <changeSet author="matiasgraziani (generated)" id="1504306906029-16">
         <addForeignKeyConstraint baseColumnNames="question_type" baseTableName="Question" constraintName="FK_rb5mc8h5x0on3606gbmn1i6t7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="QuestionType"/>
     </changeSet>
+
+    <changeSet author="mgraz1 (generated)" id="1504318591057-1">
+        <createTable tableName="Answer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="AnswerPK"/>
+            </column>
+            <column name="answer" type="VARCHAR(255)"/>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mgraz1 (generated)" id="1504318591057-10">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="Answer" constraintName="FK_10g8xii7lw9kq0kcsobgmtw72" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="Question"/>
+    </changeSet>
 </databaseChangeLog>
