@@ -19,6 +19,7 @@ public class Answer {
         Question question = new Question();
         question.setId(answerDTO.getQuestion());
         this.question = question;
+        this.user = answerDTO.getUser();
     }
 
     @Id
@@ -30,6 +31,8 @@ public class Answer {
     private Question question;
 
     private String answer;
+
+    private String user;
 
     public Long getId() {
         return id;
@@ -53,5 +56,13 @@ public class Answer {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

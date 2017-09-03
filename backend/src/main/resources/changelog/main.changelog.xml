@@ -114,6 +114,7 @@
             <column name="question_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
+            <column name="user" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="mgraz1 (generated)" id="1504318591057-10">

@@ -11,7 +11,9 @@ export const environment = {
     },
     answer:{
       post: 'http://localhost:8080/answer'
+    },
+    category:{
+      list: 'http://localhost:8080/category'
     }
-
   }
 };

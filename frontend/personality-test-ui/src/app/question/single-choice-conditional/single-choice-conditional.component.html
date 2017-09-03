@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel {{categorystyle}}">
   <div class="panel-heading">
     <h4>{{ question.question }}</h4>
   </div>
@@ -13,14 +13,14 @@
 <ng-template #conditionalBlock>
   <div *ngIf="question.question_type.condition.if_positive.question_type.type == 'single_choice'; then singleChoiceBlock"></div>
   <ng-template #singleChoiceBlock>
-    <single-choice [question]="question.question_type.condition.if_positive"></single-choice>
+    <single-choice [question]="question.question_type.condition.if_positive" [user]="user" [categorystyle]="categorystyle"></single-choice>
   </ng-template>
   <div *ngIf="question.question_type.condition.if_positive.question_type.type == 'single_choice_conditional'; then conditionalBlock"></div>
   <ng-template #conditionalBlock>
-    <single-choice-conditional [question]="question.question_type.condition.if_positive"></single-choice-conditional>
+    <single-choice-conditional [question]="question.question_type.condition.if_positive" [user]="user" [categorystyle]="categorystyle"></single-choice-conditional>
   </ng-template>
   <div *ngIf="question.question_type.condition.if_positive.question_type.type == 'number_range'; then rangeBlock"></div>
   <ng-template #rangeBlock>
-    <number-range [question]="question.question_type.condition.if_positive"></number-range>
+    <number-range [question]="question.question_type.condition.if_positive" [user]="user" [categorystyle]="categorystyle"></number-range>
   </ng-template>
 </ng-template>

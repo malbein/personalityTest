@@ -13,6 +13,8 @@ export class NumberRange implements OnInit{
 
   answer: AnswerModel;
   @Input() question: QuestionModel;
+  @Input() user: string;
+  @Input() categorystyle: string;
   numbers: Array<number> = [];
 
   constructor(private answerService: AnswerService) {
@@ -28,6 +30,7 @@ export class NumberRange implements OnInit{
       this.answer = new AnswerModel();
     }
     this.answer.question = this.question.id;
+    this.answer.user = this.user;
 
     let from = this.question.question_type.range.from;
     let to = this.question.question_type.range.to;

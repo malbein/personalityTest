@@ -13,6 +13,8 @@ export class SingleChoiceConditional implements OnInit{
 
   answer: AnswerModel;
   @Input() question: QuestionModel;
+  @Input() user: string;
+  @Input() categorystyle: string;
   show_conditional: boolean = false;
 
   constructor(private answerService: AnswerService) {
@@ -33,6 +35,7 @@ export class SingleChoiceConditional implements OnInit{
       this.answer = new AnswerModel();
     }
     this.answer.question = this.question.id;
+    this.answer.user = this.user;
   }
 
 }
