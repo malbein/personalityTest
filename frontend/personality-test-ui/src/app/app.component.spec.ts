@@ -1,13 +1,30 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import {TestComponent} from "./test/test.component";
+import {SingleChoice} from "./question/single-choice/single-choice.component";
+import {SingleChoiceConditional} from "./question/single-choice-conditional/single-choice-conditional.component";
+import {NumberRange} from "./question/number-range/number-range.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {AlertModule} from "ngx-bootstrap";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        TestComponent,
+        SingleChoice,
+        SingleChoiceConditional,
+        NumberRange
       ],
+      imports: [
+        BrowserModule,
+        HttpClientModule,
+        AlertModule.forRoot()
+      ],
+      providers: [],
     }).compileComponents();
   }));
 
@@ -27,6 +44,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+    expect(compiled.querySelector('h1').textContent).toContain('Personality Test');
   }));
 });
